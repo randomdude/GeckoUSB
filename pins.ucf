@@ -1,0 +1,38 @@
+# ==== 6-pin header J2 ====
+# These four connections are shared with the FX2 connector
+NET "EXIDI"  LOC = "A6" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "EXICS"  LOC = "B6" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "EXIDO"  LOC = "E7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "EXICLK"  CLOCK_DEDICATED_ROUTE = "FALSE" | LOC = "F7" | IOSTANDARD = LVTTL | PERIOD = 10ns HIGH 50%;
+# ==== 6-pin header J4 ====
+# These four connections are shared with the FX2 connector
+NET "debug2<7>"  LOC = "D7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "debug2<6>"  LOC = "C7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "debug2<5>"  LOC = "F8" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "debug2<4>"  LOC = "E8" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+# ==== 6-pin header J1 ====
+# These four connections are shared with the FX2 connector
+NET "debug2<3>"  LOC = "B4" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "debug2<2>"  LOC = "A4" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "debug2<1>"  LOC = "D5" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "debug2<0>"  LOC = "C5" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+
+#NET "LED<7>" LOC = "F9" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED<6>" LOC = "E9" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED<5>" LOC = "D11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED<4>" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED<3>" LOC = "F11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED<2>" LOC = "E11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED<1>" LOC = "E12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED<0>" LOC = "F12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+
+#NET "LED1" LOC = "E12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED3" LOC = "E11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+#NET "LED4" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+
+NET "CLK_50MHZ" LOC = "C9"  | IOSTANDARD = LVCMOS33 | PERIOD = 20.0ns HIGH 40%;
+
+NET "RS232_DCE_RXD" LOC = "R7"  | IOSTANDARD = LVTTL ; 
+NET "RS232_DCE_TXD" LOC = "M14" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW ;
+
+#NET "debug0"  LOC = "D7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;

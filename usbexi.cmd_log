@@ -1,0 +1,28 @@
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
+vhdtdtfi -lib work comms.vhd -prj GCComms -o usbexi.spl -module usbexi -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e usbexi.spl C:/c0adz/gcComms/GCComms/usbexi.sym 
