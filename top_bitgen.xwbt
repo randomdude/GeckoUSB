@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\c0adz\gcComms\GCComms\top.ncd
-OUTFILE=C:\c0adz\gcComms\GCComms\top.bit
+INFILE=C:\c0adz\gcComms\svn\top.ncd
+OUTFILE=C:\c0adz\gcComms\svn\top.bit
 FAMILY=Spartan3E
 PART=xc3s500e-4fg320
-WORKINGDIR=C:\c0adz\gcComms\GCComms
+WORKINGDIR=C:\c0adz\gcComms\svn
 LICENSE=WebPack
 USER_INFO=0_0_516

@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="fifo">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-5-17T20:2:4</timestamp>
-    <pin polarity="Input" x="0" y="80" name="din(7:0)" />
-    <pin polarity="Input" x="0" y="112" name="wr_en" />
-    <pin polarity="Input" x="0" y="144" name="wr_clk" />
-    <pin polarity="Input" x="0" y="192" name="rd_en" />
-    <pin polarity="Input" x="0" y="224" name="rd_clk" />
-    <pin polarity="Output" x="320" y="80" name="full" />
-    <pin polarity="Output" x="320" y="112" name="almost_full" />
-    <pin polarity="Output" x="320" y="192" name="dout(7:0)" />
-    <pin polarity="Output" x="320" y="224" name="empty" />
-    <pin polarity="Output" x="320" y="256" name="valid" />
+    <timestamp>2012-5-20T5:44:19</timestamp>
+    <pin polarity="Input" x="0" y="80" name="din[7:0]" />
+    <pin polarity="Input" x="0" y="144" name="wr_en" />
+    <pin polarity="Input" x="0" y="176" name="wr_clk" />
+    <pin polarity="Input" x="0" y="240" name="rd_en" />
+    <pin polarity="Input" x="0" y="272" name="rd_clk" />
+    <pin polarity="Output" x="576" y="80" name="dout[7:0]" />
+    <pin polarity="Output" x="576" y="208" name="full" />
+    <pin polarity="Output" x="576" y="240" name="almost_full" />
+    <pin polarity="Output" x="576" y="272" name="prog_full" />
+    <pin polarity="Output" x="576" y="336" name="overflow" />
+    <pin polarity="Output" x="576" y="432" name="empty" />
+    <pin polarity="Output" x="576" y="528" name="valid" />
     <graph>
-        <rect width="256" x="32" y="56" height="224" />
+        <text style="fontsize:40;fontname:Arial" x="32" y="32">fifo</text>
+        <rect width="512" x="32" y="32" height="736" />
         <line x2="32" y1="80" y2="80" style="linewidth:W" x1="0" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="80" type="pin din(7:0)" />
-        <line x2="32" y1="112" y2="112" x1="0" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="112" type="pin wr_en" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="80" type="pin din[7:0]" />
         <line x2="32" y1="144" y2="144" x1="0" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="144" type="pin wr_clk" />
-        <line x2="272" y1="168" y2="168" style="linestyle:Dash" x1="48" />
-        <line x2="32" y1="192" y2="192" x1="0" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="192" type="pin rd_en" />
-        <line x2="32" y1="224" y2="224" x1="0" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="224" type="pin rd_clk" />
-        <line x2="288" y1="80" y2="80" x1="320" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="284" y="80" type="pin full" />
-        <line x2="288" y1="112" y2="112" x1="320" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="284" y="112" type="pin almost_full" />
-        <line x2="288" y1="192" y2="192" style="linewidth:W" x1="320" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="284" y="192" type="pin dout(7:0)" />
-        <line x2="288" y1="224" y2="224" x1="320" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="284" y="224" type="pin empty" />
-        <line x2="288" y1="256" y2="256" x1="320" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="284" y="256" type="pin valid" />
-        <text style="fontsize:40;fontname:Arial" x="132" y="36">fifo</text>
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="144" type="pin wr_en" />
+        <line x2="32" y1="176" y2="176" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="176" type="pin wr_clk" />
+        <line x2="32" y1="240" y2="240" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="240" type="pin rd_en" />
+        <line x2="32" y1="272" y2="272" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="272" type="pin rd_clk" />
+        <line x2="544" y1="80" y2="80" style="linewidth:W" x1="576" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="540" y="80" type="pin dout[7:0]" />
+        <line x2="544" y1="208" y2="208" x1="576" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="540" y="208" type="pin full" />
+        <line x2="544" y1="240" y2="240" x1="576" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="540" y="240" type="pin almost_full" />
+        <line x2="544" y1="272" y2="272" x1="576" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="540" y="272" type="pin prog_full" />
+        <line x2="544" y1="336" y2="336" x1="576" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="540" y="336" type="pin overflow" />
+        <line x2="544" y1="432" y2="432" x1="576" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="540" y="432" type="pin empty" />
+        <line x2="544" y1="528" y2="528" x1="576" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="540" y="528" type="pin valid" />
     </graph>
 </symbol>

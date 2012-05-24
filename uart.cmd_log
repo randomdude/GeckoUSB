@@ -18,3 +18,7 @@ vhdtdtfi -lib work uart.vhd -prj GCComms -o uart.spl -module uart -template C:/X
 spl2sym -intstyle ise -family spartan3e uart.spl C:/c0adz/gcComms/GCComms/uart.sym 
 vhdtdtfi -lib work uart.vhd -prj GCComms -o uart.spl -module uart -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
 spl2sym -intstyle ise -family spartan3e uart.spl C:/c0adz/gcComms/GCComms/uart.sym 
+vhdtdtfi -lib work uart.vhd -prj GCComms -o uart.spl -module uart -template C:/Xilinx/12.2/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e uart.spl C:/c0adz/gcComms/svn/uart.sym 
+vhdtdtfi -prj GCComms -o C:/c0adz/gcComms/svn/uart.vhi -lib work C:/c0adz/gcComms/svn//uart.vhd -module uart -template C:/Xilinx/12.2/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror 
+vhdtdtfi -prj GCComms -o C:/c0adz/gcComms/svn/uart.vhi -lib work C:/c0adz/gcComms/svn//uart.vhd -module uart -template C:/Xilinx/12.2/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror 

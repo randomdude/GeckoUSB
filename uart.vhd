@@ -11,7 +11,8 @@ entity uart is
 			  rd_req : out STD_LOGIC;	-- Assert after a byte is read from 'datain'
 			  wr_req : out STD_LOGIC;	-- Assert when a byte is written to 'dataout'
 			  uart_rx : in STD_LOGIC;	-- RS232 signal from PC
-			  uart_tx : out STD_LOGIC	-- RS232 signal to PC
+			  uart_tx : out STD_LOGIC;	-- RS232 signal to PC
+			  debug : out  STD_LOGIC_VECTOR (3 downto 0)
 			  );
 end uart;
 
@@ -47,7 +48,7 @@ begin
 			baudCounter <= 0;
 			uart_tx <= '1';					
 		else
-			if (clkDiv = 5209) then
+			if (clkDiv = 434) then
 				-- OK, new bit!
 				clkDiv <= 0;
 				baudCounter <= baudCounter + 1;
@@ -62,7 +63,6 @@ begin
 					when 7 => uart_tx <= dataToTx(6);
 					when 8 => uart_tx <= dataToTx(7);
 					when 9 => uart_tx <= '1';		-- Stop bit
-					when 10 => uart_tx <= '1';		-- Stop bit
 					when others =>
 						txInProgress <= '0';
 				end case;
@@ -91,7 +91,7 @@ begin
 		if (stateRx = 1) then
 			-- OK, a transmission has just started.
 			-- Advance a half baud so we're in the middle of the incoming bit and can sample there.
-			if (rxCounter = 2604) then
+			if (rxCounter = 217) then
 				stateRx <= 2;
 				rxCounter <= 0;
 				baudCounterRx <= 0;
@@ -103,7 +103,7 @@ begin
 		if (stateRx = 2) then
 				-- Bits are being recieved.
 				-- Wait for a bit time, and then sample.
-				if (rxCounter = 5209) then
+				if (rxCounter = 434) then
 					if (baudCounterRx = 0) then
 						rx(0) <= uart_rx;
 					end if;
@@ -147,6 +147,7 @@ begin
 			dataout <= rx;
 
 			stateRx <= stateRx + 1;
+			debug <= rx(3 downto 0);
 		end if;
 
 		if (stateRx = 4) then

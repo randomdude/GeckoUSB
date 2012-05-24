@@ -39,8 +39,10 @@ component fifo
 	dout: OUT std_logic_VECTOR(7 downto 0);
 	full: OUT std_logic;
 	almost_full: OUT std_logic;
+	overflow: OUT std_logic;
 	empty: OUT std_logic;
-	valid: OUT std_logic);
+	valid: OUT std_logic;
+	prog_full: OUT std_logic);
 end component;
 
 -- Synplicity black box declaration
@@ -63,8 +65,10 @@ your_instance_name : fifo
 			dout => dout,
 			full => full,
 			almost_full => almost_full,
+			overflow => overflow,
 			empty => empty,
-			valid => valid);
+			valid => valid,
+			prog_full => prog_full);
 -- INST_TAG_END ------ End INSTANTIATION Template ------------
 
 -- You must compile the wrapper file fifo.vhd when simulating

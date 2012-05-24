@@ -46,8 +46,10 @@ module fifo(
 	dout,
 	full,
 	almost_full,
+	overflow,
 	empty,
-	valid);
+	valid,
+	prog_full);
 
 
 input wr_clk;
@@ -58,15 +60,17 @@ input rd_en;
 output [7 : 0] dout;
 output full;
 output almost_full;
+output overflow;
 output empty;
 output valid;
+output prog_full;
 
 // synthesis translate_off
 
       FIFO_GENERATOR_V6_2 #(
 		.C_COMMON_CLOCK(0),
 		.C_COUNT_TYPE(0),
-		.C_DATA_COUNT_WIDTH(4),
+		.C_DATA_COUNT_WIDTH(6),
 		.C_DEFAULT_VALUE("BlankString"),
 		.C_DIN_WIDTH(8),
 		.C_DOUT_RST_VAL("0"),
@@ -82,7 +86,7 @@ output valid;
 		.C_HAS_DATA_COUNT(0),
 		.C_HAS_INT_CLK(0),
 		.C_HAS_MEMINIT_FILE(0),
-		.C_HAS_OVERFLOW(0),
+		.C_HAS_OVERFLOW(1),
 		.C_HAS_RD_DATA_COUNT(0),
 		.C_HAS_RD_RST(0),
 		.C_HAS_RST(0),
@@ -105,13 +109,13 @@ output valid;
 		.C_PROG_EMPTY_THRESH_ASSERT_VAL(4),
 		.C_PROG_EMPTY_THRESH_NEGATE_VAL(5),
 		.C_PROG_EMPTY_TYPE(0),
-		.C_PROG_FULL_THRESH_ASSERT_VAL(15),
-		.C_PROG_FULL_THRESH_NEGATE_VAL(14),
-		.C_PROG_FULL_TYPE(0),
-		.C_RD_DATA_COUNT_WIDTH(4),
-		.C_RD_DEPTH(16),
+		.C_PROG_FULL_THRESH_ASSERT_VAL(50),
+		.C_PROG_FULL_THRESH_NEGATE_VAL(49),
+		.C_PROG_FULL_TYPE(1),
+		.C_RD_DATA_COUNT_WIDTH(6),
+		.C_RD_DEPTH(64),
 		.C_RD_FREQ(1),
-		.C_RD_PNTR_WIDTH(4),
+		.C_RD_PNTR_WIDTH(6),
 		.C_UNDERFLOW_LOW(0),
 		.C_USE_DOUT_RST(0),
 		.C_USE_ECC(0),
@@ -120,10 +124,10 @@ output valid;
 		.C_USE_FWFT_DATA_COUNT(0),
 		.C_VALID_LOW(0),
 		.C_WR_ACK_LOW(0),
-		.C_WR_DATA_COUNT_WIDTH(4),
-		.C_WR_DEPTH(16),
+		.C_WR_DATA_COUNT_WIDTH(6),
+		.C_WR_DEPTH(64),
 		.C_WR_FREQ(1),
-		.C_WR_PNTR_WIDTH(4),
+		.C_WR_PNTR_WIDTH(6),
 		.C_WR_RESPONSE_LATENCY(1))
 	inst (
 		.WR_CLK(wr_clk),
@@ -134,8 +138,10 @@ output valid;
 		.DOUT(dout),
 		.FULL(full),
 		.ALMOST_FULL(almost_full),
+		.OVERFLOW(overflow),
 		.EMPTY(empty),
 		.VALID(valid),
+		.PROG_FULL(prog_full),
 		.BACKUP(),
 		.BACKUP_MARKER(),
 		.CLK(),
@@ -153,13 +159,11 @@ output valid;
 		.INJECTDBITERR(),
 		.INJECTSBITERR(),
 		.WR_ACK(),
-		.OVERFLOW(),
 		.ALMOST_EMPTY(),
 		.UNDERFLOW(),
 		.DATA_COUNT(),
 		.RD_DATA_COUNT(),
 		.WR_DATA_COUNT(),
-		.PROG_FULL(),
 		.PROG_EMPTY(),
 		.SBITERR(),
 		.DBITERR());

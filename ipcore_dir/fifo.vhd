@@ -50,8 +50,10 @@ ENTITY fifo IS
 	dout: OUT std_logic_VECTOR(7 downto 0);
 	full: OUT std_logic;
 	almost_full: OUT std_logic;
+	overflow: OUT std_logic;
 	empty: OUT std_logic;
-	valid: OUT std_logic);
+	valid: OUT std_logic;
+	prog_full: OUT std_logic);
 END fifo;
 
 ARCHITECTURE fifo_a OF fifo IS
@@ -66,8 +68,10 @@ component wrapped_fifo
 	dout: OUT std_logic_VECTOR(7 downto 0);
 	full: OUT std_logic;
 	almost_full: OUT std_logic;
+	overflow: OUT std_logic;
 	empty: OUT std_logic;
-	valid: OUT std_logic);
+	valid: OUT std_logic;
+	prog_full: OUT std_logic);
 end component;
 
 -- Configuration specification 
@@ -90,11 +94,11 @@ end component;
 			c_use_dout_rst => 0,
 			c_underflow_low => 0,
 			c_has_meminit_file => 0,
-			c_has_overflow => 0,
+			c_has_overflow => 1,
 			c_preload_latency => 0,
 			c_dout_width => 8,
 			c_msgon_val => 1,
-			c_rd_depth => 16,
+			c_rd_depth => 64,
 			c_default_value => "BlankString",
 			c_mif_file_name => "BlankString",
 			c_error_injection_type => 0,
@@ -102,37 +106,37 @@ end component;
 			c_has_rd_rst => 0,
 			c_has_almost_full => 1,
 			c_has_rst => 0,
-			c_data_count_width => 4,
+			c_data_count_width => 6,
 			c_has_wr_ack => 0,
 			c_use_ecc => 0,
 			c_wr_ack_low => 0,
 			c_common_clock => 0,
-			c_rd_pntr_width => 4,
+			c_rd_pntr_width => 6,
 			c_use_fwft_data_count => 0,
 			c_has_almost_empty => 0,
-			c_rd_data_count_width => 4,
+			c_rd_data_count_width => 6,
 			c_enable_rlocs => 0,
-			c_wr_pntr_width => 4,
+			c_wr_pntr_width => 6,
 			c_overflow_low => 0,
 			c_prog_empty_type => 0,
 			c_optimization_mode => 0,
-			c_wr_data_count_width => 4,
+			c_wr_data_count_width => 6,
 			c_preload_regs => 1,
 			c_dout_rst_val => "0",
 			c_has_data_count => 0,
-			c_prog_full_thresh_negate_val => 14,
-			c_wr_depth => 16,
+			c_prog_full_thresh_negate_val => 49,
+			c_wr_depth => 64,
 			c_prog_empty_thresh_negate_val => 5,
 			c_prog_empty_thresh_assert_val => 4,
 			c_has_valid => 1,
 			c_init_wr_pntr_val => 0,
-			c_prog_full_thresh_assert_val => 15,
+			c_prog_full_thresh_assert_val => 50,
 			c_use_fifo16_flags => 0,
 			c_has_backup => 0,
 			c_valid_low => 0,
 			c_prim_fifo_type => "512x36",
 			c_count_type => 0,
-			c_prog_full_type => 0,
+			c_prog_full_type => 1,
 			c_memory_type => 2);
 -- synthesis translate_on
 BEGIN
@@ -147,8 +151,10 @@ U0 : wrapped_fifo
 			dout => dout,
 			full => full,
 			almost_full => almost_full,
+			overflow => overflow,
 			empty => empty,
-			valid => valid);
+			valid => valid,
+			prog_full => prog_full);
 -- synthesis translate_on
 
 END fifo_a;

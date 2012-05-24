@@ -40,8 +40,10 @@ fifo YourInstanceName (
 	.dout(dout), // Bus [7 : 0] 
 	.full(full),
 	.almost_full(almost_full),
+	.overflow(overflow),
 	.empty(empty),
-	.valid(valid));
+	.valid(valid),
+	.prog_full(prog_full));
 
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 
