@@ -78,7 +78,7 @@ begin
 -- Main State Machine
 ----------------------------------------------------------------
 
-process (exi_clk, exi_cs, exi_do, exi_cmd, exi_count)
+process (fastclk, exi_clk, rst, exi_cs, exi_do, exi_cmd, exi_count)
 
 begin
 	

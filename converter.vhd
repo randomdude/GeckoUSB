@@ -136,12 +136,14 @@ begin
 
 	-- This FIFO is in charge of buffering data from the EXI port to the RS232 side.
 	TXFIFO : fifo port map (
-			wr_clk => fastclk,
-			rd_clk => exi_clk,
-			din => tx_data_in,
+			wr_clk => exi_clk,
 			wr_en => tx_wr_en,
+			din => tx_data_in,
+			
+			rd_clk => fastclk,
 			rd_en => tx_rd_en,
 			dout => tx_data_out,
+			
 			full => tx_full,
 			almost_full => tx_almost_full,
 --			overflow => ,

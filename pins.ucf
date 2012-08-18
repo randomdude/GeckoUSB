@@ -1,62 +1,73 @@
-# ==== 6-pin header J2 ====
-# These four connections are shared with the FX2 connector
-NET "exi_di"  LOC = "A6" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-NET "exi_cs"  LOC = "B6" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-NET "exi_do"  LOC = "E7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-NET "exi_clk"  CLOCK_DEDICATED_ROUTE = "FALSE" | LOC = "F7" | IOSTANDARD = LVTTL | PERIOD = 10ns HIGH 50%;
-# ==== 6-pin header J4 ====
-# These four connections are shared with the FX2 connector
-#NET "debug1"  LOC = "D7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug2"  LOC = "C7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug3"  LOC = "F8" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug4"  LOC = "E8" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug<0>"  LOC = "D7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug<1>"  LOC = "C7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug<2>"  LOC = "F8" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug<3>"  LOC = "E8" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-# ==== 6-pin header J1 ====
-# These four connections are shared with the FX2 connector
-#NET "debug2<3>"  LOC = "B4" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug2<2>"  LOC = "A4" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug2<1>"  LOC = "D5" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
-#NET "debug2<0>"  LOC = "C5" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+# Global connections
+NET "fastclk" LOC = "C9"  | IOSTANDARD = LVTTL | PERIOD = 20.0ns HIGH 40%;
 
-#NET "debug<4>" LOC = "F9" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "debug<5>" LOC = "E9" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "debug<6>" LOC = "D11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "debug<7>" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+# Converter 1
+NET "uart_RXD_1" LOC = "B4" | IOSTANDARD = LVTTL ; 
+NET "uart_TXD_1" LOC = "A4" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW ;
+NET "uart_RTS_1" LOC = "D5" | IOSTANDARD = LVTTL ;
+NET "uart_CTS_1" LOC = "C5" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW ; 
 
-#NET "leds<7>" LOC = "F9" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "leds<6>" LOC = "E9" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "leds<5>" LOC = "D11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "leds<4>" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "leds<3>" LOC = "F11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "leds<2>" LOC = "E11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "leds<1>" LOC = "E12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "leds<0>" LOC = "F12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+NET "exi_di_1"  LOC = "A6" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "exi_cs_1"  LOC = "B6" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "exi_do_1"  LOC = "E7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "exi_clk_1"  LOC = "F7" | IOSTANDARD = LVTTL ;
 
-#NET "LED1" LOC = "E12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED3" LOC = "E11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED4" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+# These four connections are shared with the J1 6-pin accessory header
+#NET "FX2_IO<1>" LOC = "B4" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+#NET "FX2_IO<2>" LOC = "A4" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+#NET "FX2_IO<3>" LOC = "D5" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+#NET "FX2_IO<4>" LOC = "C5" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+# These four connections are shared with the J2 6-pin accessory header
+#NET "FX2_IO<5>" LOC = "A6" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+#NET "FX2_IO<6>" LOC = "B6" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+#NET "FX2_IO<7>" LOC = "E7" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+#NET "FX2_IO<8>" LOC = "F7" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
 
-#NET "LED7" LOC = "F9" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED6" LOC = "E9" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED5" LOC = "D11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED4" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED3" LOC = "F11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED2" LOC = "E11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED1" LOC = "E12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
-#NET "LED0" LOC = "F12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+# Converter 2
+# These four connections are shared with the J4 6-pin accessory header
+NET "uart_RXD_2" LOC = "D7" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_TXD_2" LOC = "C7" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_RTS_2" LOC = "F8" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_CTS_2" LOC = "E8" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+# The discrete LEDs are shared with the following 8 FX2 connections
+NET "exi_di_2" LOC = "F9" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_cs_2" LOC = "E9" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_do_2" LOC = "D11" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_clk_2" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
 
-NET "fastclk" LOC = "C9"  | IOSTANDARD = LVCMOS33 | PERIOD = 20.0ns HIGH 40%;
+# Converter 3
+NET "uart_RXD_3" LOC = "F11" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_TXD_3" LOC = "E11" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_RTS_3" LOC = "E12" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_CTS_3" LOC = "F12" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_di_3" LOC = "A13" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_cs_3" LOC = "B13" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_do_3" LOC = "A14" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_clk_3" LOC = "B14" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
 
-#NET "RS232_DCE_RXD" LOC = "R7"  | IOSTANDARD = LVTTL ; 
-#NET "RS232_DCE_TXD" LOC = "M14" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW ;
+# Converter 4
+NET "uart_RXD_4" LOC = "C14" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_TXD_4" LOC = "D14" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_RTS_4" LOC = "A16" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_CTS_4" LOC = "B16" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_di_4" LOC = "E13" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_cs_4" LOC = "C4" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_do_4" LOC = "B11" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_clk_4" LOC = "A11" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
 
-NET "uart_RXD" LOC = "B4" | IOSTANDARD = LVTTL ; 
-NET "uart_TXD" LOC = "A4" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW ;
+# Converter 5
+# Careful! some pins have been changed here because of the S3's input-only pins!
+NET "uart_TXD_5" LOC = "A8" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_CTS_5" LOC = "G9" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_RXD_5" LOC = "C12" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "uart_RTS_5" LOC = "D12" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_di_5" LOC = "C3" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_cs_5" LOC = "B15" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_do_5" LOC = "A15" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
+NET "exi_clk_5" LOC = "C15" | IOSTANDARD = LVTTL | SLEW = FAST | DRIVE = 8 ;
 
-NET "uart_CTS" LOC = "C5" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW ; 
-NET "uart_RTS" LOC = "D5" | IOSTANDARD = LVTTL ;
-
-#NET "debug0"  LOC = "D7" | IOSTANDARD = LVTTL  | SLEW = SLOW  | DRIVE = 6 ;
+NET "exi_clk_1"  CLOCK_DEDICATED_ROUTE = "FALSE" | PERIOD = 10ns HIGH 50%;
+NET "exi_clk_2"  CLOCK_DEDICATED_ROUTE = "FALSE" | PERIOD = 10ns HIGH 50%;
+NET "exi_clk_3"  CLOCK_DEDICATED_ROUTE = "FALSE" | PERIOD = 10ns HIGH 50%;
+NET "exi_clk_4"  CLOCK_DEDICATED_ROUTE = "FALSE" | PERIOD = 10ns HIGH 50%;
+NET "exi_clk_5"  CLOCK_DEDICATED_ROUTE = "FALSE" | PERIOD = 10ns HIGH 50%;
