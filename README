@@ -1,0 +1,5 @@
+Modifications to the 'GeckoUSB' driver for the Nintendo Gamecube originally by Ian Callaghan - usbgecko.com.
+
+This code targets a Xilinx Spartan3, on the Xilinx demo board.
+
+Also included is a patch to the kernel, against 2.6.32.27.

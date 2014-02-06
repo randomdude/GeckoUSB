@@ -1,0 +1,148 @@
+--- linux-2.6.32.27/drivers/serial/usbgecko.c	2012-03-16 18:28:34.393587508 +0000
++++ ./usbgecko.c	2012-05-24 17:33:16.037171945 +0100
+@@ -24,6 +24,8 @@
+ #include <linux/tty_flip.h>
+ #include <linux/kthread.h>
+ #include <linux/delay.h>
++#include <linux/circ_buf.h>
++#define XMITSIZE 256
+ 
+ #include <linux/exi.h>
+ 
+@@ -54,6 +56,7 @@
+ 	struct task_struct *poller;
+ 	struct mutex mutex;
+ 	int refcnt;
++	struct circ_buf xmit;
+ };
+ 
+ static struct ug_adapter ug_adapters[2];
+@@ -342,6 +345,20 @@
+ 			}
+ 			schedule_timeout(1);
+ 		}
++		// Now try to transmit anything pending.
++		if (adapter) {
++			unsigned long head = ACCESS_ONCE(adapter->xmit.head);
++			unsigned long tail = adapter->xmit.tail;
++			count = CIRC_CNT(head, tail, XMITSIZE);
++			if (count > 0) {
++				if(ug_safe_putc(adapter,
++					adapter->xmit.buf[tail])) {
++					barrier();
++					adapter->xmit.tail = (tail + 1) & (XMITSIZE - 1);
++				}
++			}
++		}
++
+ 		set_task_state(current, TASK_RUNNING);
+ 	}
+ 
+@@ -402,11 +419,37 @@
+ 	mutex_unlock(&adapter->mutex);
+ }
+ 
++static int ug_tty_putchar(struct tty_struct *tty, unsigned char ch)
++{
++	struct ug_adapter *adapter = tty->driver_data;
++	struct circ_buf  *xmit = &adapter->xmit;
++	unsigned long head, tail;
++	int index;
++
++	if (!adapter)
++		return -ENODEV;
++
++	index = tty->index;
++	adapter = &ug_adapters[index];
++
++	head = xmit->head;
++	tail = ACCESS_ONCE(xmit->tail);
++
++	if( CIRC_SPACE(head, tail, XMITSIZE) == 0)
++		return 0;
++
++	xmit->buf[head] = ch;
++	barrier();
++	xmit->head = (head + 1) & (XMITSIZE - 1);
++
++	return 1;
++}
++
+ static int ug_tty_write(struct tty_struct *tty,
+ 			 const unsigned char *buf, int count)
+ {
+ 	struct ug_adapter *adapter = tty->driver_data;
+-	char *b = (char *)buf;
++	unsigned long head, tail;
+ 	int index;
+ 	int i;
+ 
+@@ -415,19 +458,42 @@
+ 
+ 	index = tty->index;
+ 	adapter = &ug_adapters[index];
+-	for (i = 0; i < count; i++)
+-		ug_safe_putc(adapter, *b++);
++
++	head = ACCESS_ONCE(adapter->xmit.head);
++	tail = adapter->xmit.tail;
++
++	// Simply pass all our data to putchar.
++	for(i=0; i<count; i++)
++		ug_tty_putchar(tty, buf[i]);
++
+ 	return count;
+ }
+ 
+ static int ug_tty_write_room(struct tty_struct *tty)
+ {
+-	return 0x123; /* whatever */
++	struct ug_adapter *adapter = tty->driver_data;
++
++	if (!adapter)
++		return 0;
++
++	unsigned long head = ACCESS_ONCE(adapter->xmit.head);
++	unsigned long tail = adapter->xmit.tail;
++
++	return CIRC_SPACE(head, tail, XMITSIZE);
+ }
+ 
+ static int ug_tty_chars_in_buffer(struct tty_struct *tty)
+ {
+-	return 0; /* unbuffered */
++	struct ug_adapter *adapter = tty->driver_data;
++	unsigned long head, tail;
++
++	if (!adapter)
++		return 0;
++
++	head = ACCESS_ONCE(adapter->xmit.head);
++	tail = adapter->xmit.tail;
++
++	return CIRC_CNT(head, tail, XMITSIZE);
+ }
+ 
+ 
+@@ -435,6 +501,7 @@
+ 	.open = ug_tty_open,
+ 	.close = ug_tty_close,
+ 	.write = ug_tty_write,
++	.put_char = ug_tty_putchar,
+ 	.write_room = ug_tty_write_room,
+ 	.chars_in_buffer = ug_tty_chars_in_buffer,
+ };
+@@ -507,6 +574,13 @@
+ 	adapter->poller = ERR_PTR(-EINVAL);
+ 	mutex_init(&adapter->mutex);
+ 	adapter->refcnt = 0;
++	adapter->xmit.head = adapter->xmit.tail = 0;
++	adapter->xmit.buf = kmalloc(XMITSIZE, GFP_KERNEL);
++	if(!adapter->xmit.buf)
++	{
++		drv_printk(KERN_ERR, "USB Gecko: kmalloc failed\n");
++		return 1;
++	}
+ 
+ 	adapter->exi_device = exi_device_get(exi_device);
+ 	exi_set_drvdata(exi_device, adapter);
