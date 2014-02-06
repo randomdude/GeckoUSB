@@ -2,4 +2,4 @@ Modifications to the 'GeckoUSB' driver for the Nintendo Gamecube originally by I
 
 This code targets a Xilinx Spartan3, on the Xilinx demo board.
 
-Also included is a patch to the kernel, against 2.6.32.27.
+Also included is a patch to the kernel, against 2.6.32.27, from the 'mikep1' kernel. This patch increases performance significantly and increases stability. See http://sourceforge.net/mailarchive/message.php?msg_id=29309168 for more information on it.
